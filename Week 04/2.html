@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function find(source, pattern) {
+				let starCount = 0;
+				for (let i = 0; i < pattern.length; i++) { // 循环找出有多少个*
+					if (pattern[i] === '*') {
+						starCount++;
+					}
+				}
+				if (starCount === 0) { // 没有*
+					for (let i = 0; i < pattern.length; i++) {
+						if (pattern[i] !== source[i] && pattern[i] !== '?') return false;
+					}
+					return;
+				}
+
+				let i = 0;
+				let lastIndex = 0;
+				for (i = 0; pattern[i] !== '*'; i++) { // 匹配第一个*之前的字符串
+					if (pattern[i] !== source[i] && pattern[i] !== '?') return false;
+				}
+
+				lastIndex = i; // 第一个星号之前，source和pattern是一一对应关系
+
+				for (let p = 0; p < starCount - 1; p++) { // 循环每一段星的字符串
+					i++;
+					let subPattern = '';
+					while (pattern[i] !== '*') {
+						subPattern += pattern[i];
+						i++;
+					}
+					let reg = new RegExp(subPattern.replace(/\?/g, '[\\s\\S]'), 'g'); // 替换？为任意字符
+					reg.lastIndex = lastIndex;
+					// console.log(reg.exec(source));
+					if(!reg.exec(source)) return false;
+					lastIndex = reg.lastIndex;
+				}
+
+				for (let j = 0; j <= source.length - lastIndex && pattern[pattern.length - j] !== '*'; j++) { // 尾部匹配
+					if (pattern[pattern.length - j] !== source[source.length - j] && pattern[pattern.length - j] !== '?') return false;
+				}
+				return true;
+			}
+		</script>
+	</body>
+</html>
