@@ -1,0 +1,6 @@
+- 按用途分
+  - 数据描述语言：JSON,HTML,XAML,SQL,CSS
+  - 编程语言：C,C++,Java,C#,Python,Ruby,Perl,Lisp,T-SQL,Clojure,Haskell,JavaScript
+- 按表达方式分
+  - 声明式语言：JSON,HTML,XAML,SQL,CSS,Lisp,Clojure,Haskell
+  - 命令型语言：C,C++,Java,C#,Python,Ruby,Perl,JavaScript
