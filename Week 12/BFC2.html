@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="1" style="width: 100px; height: 100px; background-color: aqua; margin: 20px;"></div>
+		<!-- 当边距折叠发生时，折叠位置选择所有 margin 中最大的那个 -->
+		<!-- 使用 overflow: hidden 创建 BFC 解决边距折叠问题，生产的新BFC仅对当前BFC里的元素有效 -->
+		<div id="2" style="overflow: hidden; margin-top:30px; background: pink;">
+			<div id="2-1" style="width: 100px; height: 100px; background-color: aqua; margin: 20px;"></div>
+		</div>
+	</body>
+</html>
